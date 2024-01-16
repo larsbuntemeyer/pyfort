@@ -1,0 +1,11 @@
+name: pyfort-tests
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - numpy #<1.24 # fixed until next cmor release
+  - setuptools
+# for testing
+  - pytest
+  - pytest-cov
+  - pytest-env
