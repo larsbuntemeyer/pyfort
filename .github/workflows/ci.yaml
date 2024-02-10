@@ -52,13 +52,15 @@ jobs:
       - name: Install on Linux
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
-            #python -m build .
+            pip install build
+            python -m build .
             pip install .
 
       - name: Install on MacOS
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
             brew reinstall gcc
+            pip install build
             CC=/usr/local/bin/gcc-12 python -m build .
             CC=/usr/local/bin/gcc-12 pip install .
             
