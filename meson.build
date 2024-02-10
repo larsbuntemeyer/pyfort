@@ -72,5 +72,4 @@ py3.extension_module('fibby',
   include_directories: inc_dirs,
   dependencies : py3_dep,
   install : true,
-  numpy_nodepr_api
 )
