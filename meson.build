@@ -20,6 +20,16 @@ add_languages('fortran', native: false)
 fc = meson.get_compiler('fortran')
 cc = meson.get_compiler('c')
 
+# Don't use the deprecated NumPy C API. Define this to a fixed version instead
+# of NPY_API_VERSION in order not to break compilation for released versions
+# when NumPy introduces a new deprecation. Use in a meson.build file::
+#
+#   py3.extension_module('_name',
+#     'source_fname',
+#     numpy_nodepr_api)
+#
+numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_1_9_API_VERSION'
+
 # https://mesonbuild.com/Python-module.html
 py_mod = import('python')
 py3 = py_mod.find_installation()
