@@ -4,6 +4,7 @@ channels:
   - nodefaults
 dependencies:
 # for testing
+  - numpy
   - pytest
   - pytest-cov
   - pytest-env
