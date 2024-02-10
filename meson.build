@@ -71,5 +71,5 @@ py3.extension_module('fibby',
   incdir_f2py / 'fortranobject.c',
   include_directories: inc_dirs,
   dependencies : py3_dep,
-  install : true,
+  install : true
 )
