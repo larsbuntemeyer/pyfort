@@ -52,7 +52,7 @@ jobs:
       - name: Install on Linux
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
-            python -m build .
+            #python -m build .
             pip install .
 
       - name: Install on MacOS
