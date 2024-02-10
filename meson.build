@@ -28,7 +28,7 @@ cc = meson.get_compiler('c')
 #     'source_fname',
 #     numpy_nodepr_api)
 #
-numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_1_9_API_VERSION'
+numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION'
 
 # https://mesonbuild.com/Python-module.html
 py_mod = import('python')
@@ -71,5 +71,6 @@ py3.extension_module('fibby',
   incdir_f2py / 'fortranobject.c',
   include_directories: inc_dirs,
   dependencies : py3_dep,
-  install : true
+  install : true,
+  numpy_nodepr_api
 )
