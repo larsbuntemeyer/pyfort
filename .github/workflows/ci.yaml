@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest]
+        os: [ubuntu-latest, macos-13, macos-latest]
         # python versions
         python-version: ["3.8", "3.9", "3.10", "3.11"]
         
@@ -56,11 +56,17 @@ jobs:
         run: |
             pip install .
 
-      - name: Install on MacOS
-        if: ${{ matrix.os == 'macos-latest' }}
+      - name: Install on MacOS-13
+        if: ${{ matrix.os == 'macos-13' }}
         run: |
             brew reinstall gcc
             CC=/usr/local/bin/gcc-12 pip install .
+
+      - name: Install on MacOS-latest
+        if: ${{ matrix.os == 'macos-latest' }}
+        run: |
+            brew install gcc
+            CC=/usr/local/bin/gcc pip install .
             
       - name: Version info
         run: |
