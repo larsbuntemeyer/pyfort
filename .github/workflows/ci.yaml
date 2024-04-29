@@ -59,7 +59,7 @@ jobs:
       - name: Install on MacOS-13
         if: ${{ matrix.os == 'macos-13' }}
         run: |
-            brew reinstall gcc-12
+            brew reinstall gcc
             CC=/usr/local/bin/gcc-12 pip install .
 
       - name: Install on MacOS-latest
