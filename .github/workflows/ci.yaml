@@ -72,8 +72,8 @@ jobs:
             
       - name: Version info
         run: |
-          conda info -a
-          conda list
+          micromamba info -a
+          micromamba list
           
       - name: Import pyfort
         run: |
