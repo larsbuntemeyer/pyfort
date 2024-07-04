@@ -67,7 +67,7 @@ jobs:
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
             #brew install gcc
-            CC=/usr/local/bin/gcc FC=/usr/local/bin/gfortran-12 pip install .
+            FC=gfortran-12 pip install .
             #pip install .
             
       - name: Version info
