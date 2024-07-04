@@ -59,19 +59,18 @@ jobs:
       - name: Install on MacOS-13
         if: ${{ matrix.os == 'macos-13' }}
         run: |
-            brew reinstall gcc
-            CC=/usr/local/bin/gcc-12 pip install .
+            FC=gfortran-12 pip install .
 
       - name: Install on MacOS-latest
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
-            brew install gcc
-            CC=/usr/local/bin/gcc pip install .
+            # https://github.com/actions/runner-images/issues/1280#issuecomment-662839485
+            FC=gfortran-12 pip install .
             
       - name: Version info
         run: |
-          conda info -a
-          conda list
+          micromamba info -a
+          micromamba list
           
       - name: Import pyfort
         run: |
