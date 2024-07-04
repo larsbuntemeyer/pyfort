@@ -11,7 +11,7 @@ requires = [
 [project]
 name = "pyfort"
 license = {file = "LICENSE"}
-description = "A Python fortrab wrapper"
+description = "A Python fortran wrapper"
 maintainers = [
     {name = "Lars Buntemeyer", email = "larsbuntemeyer@gmail.com"},
 ]
