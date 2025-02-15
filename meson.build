@@ -20,6 +20,23 @@ add_languages('fortran', native: false)
 fc = meson.get_compiler('fortran')
 cc = meson.get_compiler('c')
 
+# https://mesonbuild.com/Python-module.html
+py_mod = import('python')
+py3 = py_mod.find_installation()
+py3_dep = py3.dependency()
+message(py3.full_path())
+message(py3.get_install_dir())
+
+# Determine whether this is being compiled with numpy 1.X or 2.X
+numpy_ver = run_command(py3,
+  ['-c', 'import numpy; print(numpy.__version__.split(".")[0])'],
+  check : true
+).stdout().strip()
+is_numpytwo = numpy_ver.to_int() >= 2
+
+message('The Numpy major version is: ', numpy_ver)
+
+
 # Don't use the deprecated NumPy C API. Define this to a fixed version instead
 # of NPY_API_VERSION in order not to break compilation for released versions
 # when NumPy introduces a new deprecation. Use in a meson.build file::
@@ -28,14 +45,11 @@ cc = meson.get_compiler('c')
 #     'source_fname',
 #     numpy_nodepr_api)
 #
-numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION'
-
-# https://mesonbuild.com/Python-module.html
-py_mod = import('python')
-py3 = py_mod.find_installation()
-py3_dep = py3.dependency()
-message(py3.full_path())
-message(py3.get_install_dir())
+if is_numpytwo
+  numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_2_0_API_VERSION'
+else
+  numpy_nodepr_api = '-DNPY_NO_DEPRECATED_API=NPY_1_9_API_VERSION'
+endif
 
 incdir_numpy = run_command(py3,
   ['-c', 'import os; os.chdir(".."); import numpy; print(numpy.get_include())'],
