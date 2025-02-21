@@ -1,1 +1,1 @@
-from fibby import fib
+from fibby import fib, mo_fib

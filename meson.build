@@ -62,9 +62,9 @@ incdir_f2py = run_command(py3,
 ).stdout().strip()
 
 fibby_source = custom_target('fibbymodule.c',
-  input : ['src/fib1.f'],  # .f so no F90 wrappers
-  #output : ['fibbymodule.c', 'fibby-f2pywrappers.f'],
-  output : ['fibbymodule.c'],
+  input : ['src/mo_fib.f90', 'src/fib1.f'],  # .f so no F90 wrappers
+  output : ['fibbymodule.c', 'fibby-f2pywrappers.f', 'fibby-f2pywrappers2.f90'],
+  #output : ['fibbymodule.c'],
   command : [py3, '-m', 'numpy.f2py', '@INPUT@', '-m', 'fibby', '--lower']
 )
 
@@ -82,7 +82,7 @@ py3.install_sources([
   subdir: 'pyfort')
 
 py3.extension_module('fibby',
-  ['src/fib1.f', fibby_source],
+  ['src/fib1.f', 'src/mo_fib.f90', fibby_source],
   incdir_f2py / 'fortranobject.c',
   include_directories: inc_dirs,
   dependencies : py3_dep,
