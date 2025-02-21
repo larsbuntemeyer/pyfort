@@ -76,3 +76,4 @@ jobs:
         run: |
           python -c "import pyfort"
           python -c "import numpy as np; import pyfort; a = np.zeros(9); pyfort.fib(a); print (a)"
+          python -c "import numpy as np; import pyfort.mo_fib"
