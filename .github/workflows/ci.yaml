@@ -10,7 +10,7 @@ on:
     branches:
       - "*"
   schedule:
-      - cron: "0 * * * SUN" # run every sunday
+      - cron: '0 23 * * 0' # run every sunday
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
