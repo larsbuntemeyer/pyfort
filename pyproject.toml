@@ -3,7 +3,7 @@ build-backend = 'mesonpy'
 requires = [
 	 "wheel",
 	 "meson-python>=0.8.0",
-	 "setuptools<60.0",  # Do not increase, 60.0 enables vendored distutils
+	 "setuptools", 
 	# "oldest-supported-numpy; python_version>'3.9'",
 	# "numpy; python_version<='3.9'"
          "numpy",
@@ -16,7 +16,7 @@ description = "A Python fortran wrapper"
 maintainers = [
     {name = "Lars Buntemeyer", email = "larsbuntemeyer@gmail.com"},
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 dependencies = [
     # TODO: update to "pin-compatible" once possible, see
     # https://github.com/FFY00/meson-python/issues/29
