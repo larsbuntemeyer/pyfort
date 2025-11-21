@@ -6,7 +6,7 @@ A simple demo python package that compiles a Fortran extension using meson, base
 
 ## How to use
 
-This repository contains a template for a python package with a Fortran extension. You should put your fortran source code into the `src` subdirectory and list all files in the `cusomt_target` and `extension_module` sections.
+This repository contains a template for a python package with a Fortran extension. You should put your fortran source code into the `src` subdirectory and list all files in the `custom_target` and `extension_module` sections.
 You can then compile and install your code using
 
 ```
